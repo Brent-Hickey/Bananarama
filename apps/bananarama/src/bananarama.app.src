@@ -2,7 +2,7 @@
     {description, "The Bananarama of Alien Technology"},
     {vsn, git},
     {registered, []},
-    {mod, {bananarama, []}},
+    {mod, {'bananarama-app', []}},
     {applications, [
         kernel,
         stdlib
