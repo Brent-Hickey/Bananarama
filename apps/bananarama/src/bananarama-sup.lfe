@@ -37,7 +37,7 @@
 ;;; -----------------------
 
 (defun init (_) ;; args
-  `#(ok #(,(sup-flags) (,(child 'apps/bananarama 'start_link '())))))
+  `#(ok #(,(sup-flags) (,(child 'bananarama 'start_link '())))))
 
 ;;; -----------------
 ;;; private functions

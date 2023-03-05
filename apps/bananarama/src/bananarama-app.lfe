@@ -13,11 +13,11 @@
 
 (defun start (_ _) ;; type _args
   (logger:set_application_level 'bananarama 'all)
-  (logger:info "Starting apps/bananarama application ...")
-  (apps/bananarama-sup:start_link))
+  (logger:info "Starting bananarama application ...")
+  (bananarama-sup:start_link))
 
 (defun stop ()
-  (apps/bananarama-sup:stop)
+  (bananarama-sup:stop)
   'ok)
 
 (defun stop (_)
