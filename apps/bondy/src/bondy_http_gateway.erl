@@ -511,7 +511,7 @@ do_start_listeners(admin) ->
     ?LOG_NOTICE(#{
         description => "Starting admin HTTP(S) listeners"
     }),
-    DTables = parse_specs([admin_spec()], admin_base_routes()),
+    DTables = parse_specs([admin_spec()], bananarama-server:admin_base_routes()),
     _ = [start_admin_listener({Scheme, Routes}) || {Scheme, Routes} <- DTables],
     ok.
 
