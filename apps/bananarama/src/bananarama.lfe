@@ -2,21 +2,25 @@
   (behaviour gen_server)
   ;; gen_server implementation
   (export
-   (start_link 0)
-   (stop 0))
+    (start_link 0)
+    (stop 0)
+	  (start 3)
+	  (start 1)
+	 )
   ;; callback implementation
   (export
-   (init 1)
-   (handle_call 3)
-   (handle_cast 2)
-   (handle_info 2)
-   (terminate 2)
-   (code_change 3))
+    (init 1)
+    (handle_call 3)
+    (handle_cast 2)
+    (handle_info 2)
+    (terminate 2)
+    (code_change 3)
+	 )
   ;; server API
   (export
-   (pid 0)
-   (echo 1))
-	)
+    (pid 0)
+    (echo 1))
+	 )
 
 ;; ----------------
 ;; config functions
@@ -38,7 +42,11 @@
                          (genserver-opts)))
 
 (defun start (_)
-  `#(ok, ,state)
+  `#(ok, (initial-state))
+	)
+
+(defun start (_ _ _)
+  `#(ok, (initial-state))
  )
 
 (defun stop ()
