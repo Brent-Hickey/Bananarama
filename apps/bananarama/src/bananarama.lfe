@@ -37,6 +37,10 @@
                          (initial-state)
                          (genserver-opts)))
 
+(defun start (_)
+  `#(ok, ,state))
+ )
+
 (defun stop ()
   (gen_server:call (SERVER) 'stop))
 
