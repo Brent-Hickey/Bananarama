@@ -1,0 +1,15 @@
+{application, bananarama, [
+    {description, "The Bananarama of Alien Technology"},
+    {vsn, git},
+    {registered, []},
+    {mod, {bananarama, []}},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {env,[]},
+    {modules, []},
+
+    {licenses, ["GPL 3.0"]},
+    {links, []}
+ ]}.
