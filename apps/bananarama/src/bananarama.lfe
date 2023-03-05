@@ -83,7 +83,6 @@
   (erlang:whereis (SERVER)))
 
 (defun echo (msg)
-	(admin_base_routes)
   (gen_server:call (SERVER) `#(echo ,msg)))
 
 
