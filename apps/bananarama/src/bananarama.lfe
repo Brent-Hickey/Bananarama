@@ -1,11 +1,9 @@
-(defmodule bananarama
+(defmodule bananarama-server
   (behaviour gen_server)
   ;; gen_server implementation
   (export
     (start_link 0)
     (stop 0)
-	  (start 3)
-	  (start 1)
 	 )
   ;; callback implementation
   (export
@@ -40,14 +38,6 @@
                          (MODULE)
                          (initial-state)
                          (genserver-opts)))
-
-(defun start (_)
-  `#(ok, (initial-state))
-	)
-
-(defun start (_ _ _)
-  `#(ok, (initial-state))
- )
 
 (defun stop ()
   (gen_server:call (SERVER) 'stop))
