@@ -38,7 +38,7 @@
                          (genserver-opts)))
 
 (defun start (_)
-  `#(ok, ,state))
+  `#(ok, ,state)
  )
 
 (defun stop ()
