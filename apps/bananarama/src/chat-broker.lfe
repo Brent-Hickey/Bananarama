@@ -33,7 +33,8 @@
                            )
           )
          (state (make-state subscriptions (map id "keypress")))
-        )
+         )
+    (: io format "started up chat_broker with id ~p" (list id))
     (tuple 'ok state)
    )
  )
@@ -48,7 +49,7 @@
 
 ;; info state
 (defun handle_info
-  (((tuple "$bondy_request" _ "com.myapp.hello" (= event (make-event))) state)
+  (((tuple '$bondy_request _ (binary "com.myapp.hello") (= event (make-event))) state)
    ;; subscription message
    (let* ((id (event-subscription_id event))
           (topic (: maps get id (state-subscriptions state) 'undefined))
@@ -64,6 +65,7 @@
                        )
             )
           )
+     (: io format "returning new-state")
      (tuple 'noreply new-state)
      )
    )
