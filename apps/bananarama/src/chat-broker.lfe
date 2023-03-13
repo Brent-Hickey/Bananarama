@@ -29,7 +29,9 @@
                             (map 'subscription_id (: bondy_utils gen_message_id 'global)
                                  'match (binary "exact"))
                             "keypress"
-                            (make-state bondy_ref ref)))
+                            ref
+                           )
+          )
          (state (make-state subscriptions (map id "keypress")))
         )
     (tuple 'ok state)
