@@ -95,7 +95,7 @@
   )
 
 (defun pid ()
-  (: erlang whereis (SERVER)))
+  (: erlang whereis (MODULE)))
 
 (defun echo (msg)
-  (: gen_server call (SERVER) `#(echo ,msg)))
+  (: gen_server call (MODULE) `#(echo ,msg)))
