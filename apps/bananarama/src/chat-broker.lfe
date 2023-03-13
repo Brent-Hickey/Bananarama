@@ -45,6 +45,7 @@
 
 ;; message state
 (defun handle_cast (_ state)
+  (: io format "handlin cast")
   (tuple 'noreply state))
 
 ;; info state
