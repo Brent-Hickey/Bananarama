@@ -18,7 +18,7 @@
  )
 
 (defun start_link ()
-  (gen_server:start-link (tuple 'local 'player_actor) 'player_actor () ())
+  (gen_server:start-link (tuple 'local 'chat-broker) 'chat-broker () ())
  )
 
 (defun init (_)
