@@ -22,18 +22,19 @@
  )
 
 (defun init (_)
-  (let* ((session-id (: bondy_session_id new))
-         (ref (: bondy_ref new 'internal (self) session-id))
-         ((tuple 'ok id) (: bondy_broker subscribe
-                            "com.myapp.hello"
-                            (map 'subscription_id (: bondy_utils gen_message_id 'global)
-                                 'match (binary "exact"))
-                            "keypress"
-                            (make-state bondy_ref ref)))
-         (state (make-state subscriptions (map id "keypress")))
-        )
-    (tuple 'ok state)
-   )
+  ;; (let* ((session-id (: bondy_session_id new))
+  ;;        (ref (: bondy_ref new 'internal (self) session-id))
+  ;;        ((tuple 'ok id) (: bondy_broker subscribe
+  ;;                           "com.myapp.hello"
+  ;;                           (map 'subscription_id (: bondy_utils gen_message_id 'global)
+  ;;                                'match (binary "exact"))
+  ;;                           "keypress"
+  ;;                           (make-state bondy_ref ref)))
+  ;;        (state (make-state subscriptions (map id "keypress")))
+  ;;       )
+  ;;   (tuple 'ok state)
+  ;;  )
+  (tuple 'ok #())
  )
 
 ;; request from state
