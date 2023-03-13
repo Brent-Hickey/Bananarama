@@ -18,7 +18,7 @@
  )
 
 (defun start_link ()
-  (gen_server:start-link (tuple 'local (MODULE)) (MODULE) '#() '())
+  (gen_server:start_link (tuple 'local (MODULE)) (MODULE) '#() '())
  )
 
 (defun init (_)
