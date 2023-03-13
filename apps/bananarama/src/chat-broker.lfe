@@ -51,7 +51,7 @@
 
 ;; info state
 (defun handle_info
-  (((tuple "$bondy_request" _ (binary "com.myapp.hello") (= event (make-event))) state)
+  (((tuple '$bondy_request' _ (binary "com.myapp.hello") (= event (make-event))) state)
    ;; subscription message
    (let* ((id (event-subscription_id event))
           (topic (: maps get id (state-subscriptions state) 'undefined))
