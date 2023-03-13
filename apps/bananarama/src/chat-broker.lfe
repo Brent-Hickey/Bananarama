@@ -72,8 +72,8 @@
      )
    )
 
-  (((tuple _ _ _ (make-event)) state)
-   (: io format "unhandled event in LFE")
+  (((tuple req-type _ realm (make-event)) state)
+   (: io format "unhandled event in LFE req-type: ~p realm: ~p" (list req-type realm))
    (tuple 'noreply state)
   )
   
