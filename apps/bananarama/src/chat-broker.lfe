@@ -25,7 +25,7 @@
   (let* ((session-id (: bondy_session_id new))
          (ref (: bondy_ref new 'internal (self) session-id))
          ((tuple 'ok id) (: bondy_broker subscribe
-                            (binary "com.myapp.hello")
+                            (binary "chat")
                             (map 'subscription_id (: bondy_utils gen_message_id 'global)
                                  'match (binary "exact"))
                             (binary "keypress")
@@ -51,7 +51,7 @@
 
 ;; info state
 (defun handle_info
-  (((tuple '$bondy_request' _ (binary "com.myapp.hello") (= event (make-event))) state)
+  (((tuple req-type _ (binary "com.myapp.hello") (= event (make-event))) state)
    ;; subscription message
    (let* ((id (event-subscription_id event))
           (topic (: maps get id (state-subscriptions state) 'undefined))
@@ -67,7 +67,7 @@
                        )
             )
           )
-     (: io format "returning new-state")
+     (: io format "returning new-state, req-type: ~p" (list req-type))
      (tuple 'noreply new-state)
      )
    )
