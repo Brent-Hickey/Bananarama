@@ -25,10 +25,10 @@
   (let* ((session-id (: bondy_session_id new))
          (ref (: bondy_ref new 'internal (self) session-id))
          ((tuple 'ok id) (: bondy_broker subscribe
-                            "chat"
+                            (binary "com.myapp.hello")
                             (map 'subscription_id (: bondy_utils gen_message_id 'global)
                                  'match (binary "exact"))
-                            "keypress"
+                            (binary "keypress")
                             ref
                            )
           )
