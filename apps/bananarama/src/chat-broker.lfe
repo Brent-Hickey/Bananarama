@@ -1,4 +1,4 @@
-(defmodule player_actor
+(defmodule chat-broker
   (behaviour gen_server)
 
   (export (start_link 0) (init 1)
@@ -66,7 +66,7 @@
      )
    )
 
-  (((tuple _ _ _ (= event (make-event))) state)
+  (((tuple _ _ _ (make-event)) state)
    (: io format "unhandled event in LFE")
    (tuple 'noreply state)
   )
