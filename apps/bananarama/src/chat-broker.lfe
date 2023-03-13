@@ -22,8 +22,6 @@
  )
 
 (defun init (_)
-  (pid)
-  (echo 'test)
   (let* ((session-id (: bondy_session_id new))
          (ref (: bondy_ref new 'internal (self) session-id))
          ((tuple 'ok id) (: bondy_broker subscribe
@@ -87,6 +85,8 @@
 
 ;; reason state
 (defun terminate (_ _)
+  (pid)
+  (echo 'test)
   (: io format "terminating")
   'ok
  )
