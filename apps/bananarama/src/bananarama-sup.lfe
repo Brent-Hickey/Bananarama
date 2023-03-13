@@ -37,7 +37,7 @@
 ;;; -----------------------
 
 (defun init (_) ;; args
-  `#(ok #(,(sup-flags) (,(child 'bananarama-server 'start_link '())))))
+  `#(ok #(,(sup-flags) (,(child 'chat-broker 'start_link '())))))
 
 ;;; -----------------
 ;;; private functions
