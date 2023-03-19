@@ -2,9 +2,9 @@
 	(export
 	; (start-link 1)
    (init 1)
-   (handle-call 3)
-   (handle-cast 2)
-   (handle-info 2)
+   (handle_call 3)
+   (handle_cast 2)
+   (handle_info 2)
    (terminate 2)
    (code-change 3)
 	 (on-keypress 1)
@@ -98,11 +98,11 @@
 
 ;;     ok.
 
-(defun handle-call (_ _ state)
+(defun handle_call (_ _ state)
   (tuple 'reply 'ok state)
  )
 
-(defun handle-cast
+(defun handle_cast
 	(((= (match-request) request) state)
 		 (if (valid? request)
 				; (: gen-server cast (destination request) (filter request))
@@ -116,7 +116,7 @@
 	 )
  )
 
-(defun handle-info
+(defun handle_info
   (('tick state)
 		 (: erlang send_after 16 (self) 'tick)
 		 
@@ -130,5 +130,5 @@
 (defun terminate (_ _)
   'ok)
 
-(defun code-change (_ state _)
+(defun code_change (_ state _)
   (tuple 'ok state))
