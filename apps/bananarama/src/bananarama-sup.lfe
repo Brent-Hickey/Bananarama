@@ -1,52 +1,38 @@
 (defmodule bananarama-sup
-  (beehaviour supervisor)
-  ;; supervisor implementation
+	(behavior supervisor)
+	
   (export
-   (start_link 0)
-   (stop 0))
-  ;; callback implementation
-  (export
-   (init 1))
-	)
-
-;;; ----------------
-;;; config functions
-;;; ----------------
-
-(defun SERVER () (MODULE))
-(defun supervisor-opts () '())
-(defun sup-flags ()
-  `#M(strategy one_for_one
-      intensity 3
-      period 60))
-
-;;; -------------------------
-;;; supervisor implementation
-;;; -------------------------
+	 (start_link 0)
+	 (init 1)
+	 )
+ )
 
 (defun start_link ()
-  (supervisor:start_link `#(local ,(SERVER))
-                         (MODULE)
-                         (supervisor-opts)))
-
-(defun stop ()
-  (gen_server:call (SERVER) 'stop))
-
-;;; -----------------------
-;;; callback implementation
-;;; -----------------------
+  (: supervisor start_link (tuple 'local (MODULE)) (MODULE) (list))
+	)
 
 (defun init (_) ;; args
-  `#(ok #(,(sup-flags) (,(child 'chat_broker 'start_link '())))))
-
-;;; -----------------
-;;; private functions
-;;; -----------------
-
-(defun child (mod fun args)
-  `#M(id ,mod
-      start #(,mod ,fun ,args)
-      restart permanent
-      shutdown 2000
-      type worker
-      modules (,mod)))
+	(let ((sup-flags (map 'strategy 'one_for_one
+												'intensity 3
+												'period 60)
+				 )
+				(child-specs (list
+											;; (map 'id 'chat-broker
+											;; 		 'start (tuple 'chat-broker 'start_link (list))
+											;; 		 'restart 'permanent
+											;; 		 'shutdown 2000
+											;; 		 'type 'worker
+											;; 		 'modules (list))
+											(map 'id 'region-sup
+													 'start (tuple 'region-sup 'start_link (list))
+													 'restart 'permanent
+													 'shutdown 2000
+													 'type 'supervisor
+													 'modules (list 'region-sup)
+													)
+											)
+				 )
+		    )
+		 (tuple 'ok (tuple sup-flags child-specs))
+	 )
+ )

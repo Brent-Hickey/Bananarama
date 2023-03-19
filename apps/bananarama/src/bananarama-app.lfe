@@ -1,5 +1,5 @@
 (defmodule bananarama-app
-  (behaviour application)
+  (behavior application)
   ;; app implementation
   (export
    (start 2)
@@ -18,8 +18,9 @@
 
 (defun stop ()
   (bananarama-sup:stop)
-  'ok)
+  'ok
+ )
 
 (defun stop (_)
-'ok
-	)
+	'ok
+ )

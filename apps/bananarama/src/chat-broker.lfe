@@ -1,5 +1,5 @@
-(defmodule chat_broker
-  (behaviour gen_server)
+(defmodule chat-broker
+  (behavior gen_server)
 
   (export (start_link 0) (init 1)
           (handle_call 3) (handle_cast 2) (handle_info 2)
@@ -10,30 +10,34 @@
 
 (include-lib "_build/default/lib/wamp/include/wamp.hrl")
 
+(defrecord player
+	username
+	keypresses
+ )
+
 (defrecord state
-  bondy_ref
-  exchange_ref
-  updated_specs
+  bondy-ref
   subscriptions
+	players
  )
 
 (defun start_link ()
-  (: gen_server start_link (tuple 'local (MODULE)) (MODULE) '#() '())
+  (: gen_server start_link (tuple 'local (MODULE)) (MODULE) (tuple) (list))
  )
 
 (defun init (_)
   (let* ((session-id (: bondy_session_id new))
-         (ref (: bondy_ref new 'internal (self) session-id))
-         ((tuple 'ok id) (: bondy_broker subscribe
-                            (binary "chat")
-                            (map 'subscription_id (: bondy_utils gen_message_id 'global)
-                                 'match (binary "exact"))
-                            (binary "keypress")
-                            ref
-														)
-           )
-         (state (make-state subscriptions (map id (binary "keypress"))))
-				)
+         (bondy-ref (: bondy_ref new 'internal (self) session-id))
+				 (options (map 'subscription_id (: bondy_utils gen_message_id 'global)
+												'match (binary "exact")))
+				 (realm (binary "chat")) (topic (binary "keypress"))
+         ((tuple 'ok id) (: bondy_broker subscribe realm options topic bondy-ref))
+         (state (make-state bondy-ref bondy-ref
+														subscriptions (map id (binary "keypress"))
+														players (map)
+													 )
+					 )
+			  )
 	   (: io format "started up chat_broker with id ~p" (list id))
      (tuple 'ok state)
 	 )

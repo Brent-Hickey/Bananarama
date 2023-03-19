@@ -61,19 +61,20 @@
     `#(reply ,(unknown-command) ,state)))
 
 (defun handle_info
-  ((`#(EXIT ,_ normal) state) ;from
-   `#(noreply ,state))
-  ((`#(EXIT ,pid ,reason) state)
+  (((tuple 'EXIT _ 'normal) state) ;from
+   (tuple 'noreply state))
+  (((tuple 'EXIT pid reason) state)
    (io:format "Process ~p exited! (Reason: ~p)~n" `(,pid ,reason))
-   `#(noreply ,state))
+   (tuple 'noreply state))
   ((_ state) ;msg
-   `#(noreply ,state)))
+   (tuple 'noreply state)))
 
 (defun terminate (_ _) ; _reason _state
   'ok)
 
 (defun code_change (_ state _) ; old-version extra
-  `#(ok ,state))
+  `#(ok ,state)
+  )
 
 ;;; --------------
 ;;; our server API

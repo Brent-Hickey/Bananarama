@@ -1,0 +1,32 @@
+(defmodule chat-ingress
+  (behavior ingress)
+
+	(export
+	 (init 1)
+	 (start-link 0)
+	 (valid? 1)
+	; (filter 1)
+	 ;; (destination 1)
+	)	
+ )
+
+(defun start-link ()
+	(: gen_server start_link (tuple 'local (MODULE)) (MODULE) (tuple) (list))
+ )
+
+(defun init (args)
+	(: ingress init args)
+ )
+
+(defun valid? (_)
+	 "Is the incoming request valid?"
+	 ;; (and (== (: ingress request-type request) 'chat)
+	 ;;   		(< (length (: ingress request-payload request)) 100)
+	 ;;  	 )
+	 'true
+ )
+
+;; (defun filter (request)
+;; 	"Filters a message by modifying it on the way in and returning the modified message. Defaults to returning the message untouched."
+;; 	request
+;;  )
