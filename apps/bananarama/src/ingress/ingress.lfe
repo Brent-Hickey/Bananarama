@@ -39,7 +39,7 @@
 
 (defun on-keypress (_)
 	(: io format "on-keypress handled ~n")
-	(tuple 'ok "hello")
+	(tuple 'ok (map) (list) (map))
  )
 
 (defun init (_)
