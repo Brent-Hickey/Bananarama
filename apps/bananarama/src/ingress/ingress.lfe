@@ -6,13 +6,12 @@
    (handle_cast 2)
    (handle_info 2)
    (terminate 2)
-   (code-change 3)
+   (code_change 3)
 	 (on-keypress 1)
 	)
 
 	(callback
-	 (valid 1)
-	 (start-link 0)
+	 (valid? 1)
 	 (on-keypress 1)
 	; (init 1)
 	;	(filter 1)
