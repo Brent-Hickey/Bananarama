@@ -49,9 +49,9 @@
 ;;  )
 
 (defun on-keypress (_)
-	;;(: module test-callback)
-	;;(: io format "on-keypress handled by module ~p~n" (list module))
-	(: io format "on-keypress handled by module ~n")
+	(: module test-callback)
+	(: io format "on-keypress handled by module ~p~n" (list module))
+	;;(: io format "on-keypress handled by module ~n")
 	(tuple 'ok (map) (list) (map))
  )
 
@@ -68,7 +68,7 @@
 											)
 				  )
 				 (options (map 'match (binary "exact")
-											 'callback_args (list module)))
+											 'callback_args module))
 				 (realm (binary "chat"))
 				 (procedure (binary "test-rpc"))
 				 ((tuple 'ok rpc-id) (: bondy_dealer register procedure options realm rpc-bondy-ref))
