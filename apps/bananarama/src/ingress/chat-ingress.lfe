@@ -11,11 +11,7 @@
  )
 
 (defun start-link ()
-	(: gen_server start_link (tuple 'local (MODULE)) (MODULE) (tuple) (list))
- )
-
-(defun init (args)
-	(: ingress init args)
+	(: gen_server start_link (tuple 'local (MODULE)) 'ingress (tuple) (list))
  )
 
 (defun valid? (_)

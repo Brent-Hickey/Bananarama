@@ -42,6 +42,9 @@
 	(: io format "on-keypress")
  )
 
+(defun start-link (module)
+	(: gen_server start_link (tuple 'local (MODULE)) module (tuple) (list))
+ )
 
 (defun init (_)
 	(let* ((session-id (: bondy_session_id new))
@@ -63,7 +66,7 @@
 				 ;; 	 )
 			   )
 		(: erlang send_after 16 (self) 'tick)
-	  (: io format "started up chat_broker with id ~p" (list id))
+	  (: io format "started up chat_broker with id ~p~n" (list id))
     (tuple 'ok (list))
 	 )
  )
