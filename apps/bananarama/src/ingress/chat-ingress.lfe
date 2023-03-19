@@ -2,7 +2,8 @@
   (behavior ingress)
 
 	(export
-	 ;(init 1)
+																				;(init 1)
+	 (test-callback 0)
 	 (start-link 0)
 	 (valid? 1)
 	; (filter 1)
@@ -11,7 +12,11 @@
  )
 
 (defun start-link ()
-	(: gen_server start_link (tuple 'local (MODULE)) 'ingress (tuple) (list))
+	(: gen_server start_link (tuple 'local (MODULE)) 'ingress (MODULE) (list))
+ )
+
+(defun test-callback ()
+	(: io format "test-callback in CHAT ingress")
  )
 
 (defun valid? (_)
