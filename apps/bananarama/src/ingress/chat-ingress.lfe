@@ -2,7 +2,7 @@
   (behavior ingress)
 
 	(export
-	 (init 1)
+	 ;(init 1)
 	 (start-link 0)
 	 (valid? 1)
 	; (filter 1)
