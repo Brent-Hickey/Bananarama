@@ -73,6 +73,10 @@
 				 (realm (binary "chat"))
 				 (procedure (binary "test-rpc"))
 				 ((tuple 'ok rpc-id) (: bondy_dealer register procedure options realm rpc-bondy-ref))
+				 (sub-options (map 'match (binary "exact")
+													 'subscription_id (: bondy_ref new 'internal (self) pub-session-id)
+													 )
+					 ((tuple 'ok id) (: bondy_dealer subscribe realm sub-options (binary "registrations") bondy-ref))
 				 
 	
          (state (make-state bondy_ref bondy-ref
@@ -112,7 +116,7 @@
 			(: bondy_utils gen_message_id 'global)
 			(map)
 		  (binary "message-update")
-			(list)
+			(list (state-message state))
 			(map)
 			(: bondy_context local_context (binary "chat") (state-bondy_ref state))
 		 )

@@ -35,6 +35,7 @@
 					 )
 				 )
 		(: erlang send_after 1000 (self) 'tick)
+		(: io format "started up chunk-state with id ~p~n" (list id))
 		(tuple 'ok state)
 		)	
  )
