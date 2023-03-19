@@ -77,7 +77,7 @@
 													 'subscription_id (: bondy_ref new 'internal (self) pub-session-id)
 													 )
 					 )
-					 ((tuple 'ok id) (: bondy_dealer subscribe realm sub-options (binary "registrations") bondy-ref))
+					 ((tuple 'ok _) (: bondy_dealer subscribe realm sub-options (binary "registrations") bondy-ref))
 				 
 	
          (state (make-state bondy_ref bondy-ref
