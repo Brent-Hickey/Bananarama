@@ -13,6 +13,7 @@
 	(callback
 	 (valid 1)
 	 (start-link 0)
+	 (on-keypress 0)
 	; (init 1)
 	;	(filter 1)
 	 )
