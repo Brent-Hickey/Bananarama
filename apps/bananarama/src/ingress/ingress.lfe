@@ -1,6 +1,6 @@
 (defmodule ingress
 	(export
-	; (start-link 0)
+	; (start-link 1)
    (init 1)
    (handle-call 3)
    (handle-cast 2)
@@ -40,10 +40,6 @@
 
 (defun on-keypress (_)
 	(: io format "on-keypress")
- )
-
-(defun start-link (module)
-	(: gen_server start_link (tuple 'local (MODULE)) module (tuple) (list))
  )
 
 (defun init (_)
