@@ -56,15 +56,16 @@
  )
 
 (defun init (module)
-	(let* ((session-id (: bondy_session_id new))
+	(let* ((rpc-session-id (: bondy_session_id new))
 				 (rpc-bondy-ref (: bondy_ref new 'internal
 																(tuple (MODULE) 'on-keypress)
-																session-id
+																rpc-session-id
 																)
 				   )
+				 (pub-session-id (: bondy_session_id new))
 				 (bondy-ref (: bondy_ref new 'internal
 											 (self)
-											 session-id
+											 pub-session-id
 											)
 				  )
 				 (options (map 'match (binary "exact")

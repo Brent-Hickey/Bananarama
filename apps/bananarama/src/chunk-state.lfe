@@ -28,11 +28,10 @@
 				 (realm (binary "chat"))
 				 ((tuple 'ok id) (: bondy_broker subscribe realm options (binary "message-update") bondy-ref))
 				 
-         (state (tuple (make-state bondy_ref bondy-ref
+         (state (make-state bondy_ref bondy-ref
 														subscriptions (map id (binary "message-update"))
 														players (map)
 													 )
-											 )
 					 )
 				 )
 		(: erlang send_after 1000 (self) 'tick)
@@ -44,14 +43,12 @@
   (((tuple _ _ (binary "chat") (= event (make-event))) state)
 	 (let ((message (event-args event)))
 		 (: io format "appending message update: ~p into state. New message state: ~p" (list message (++ message (state-message state))))
-		 (tuple 'noreply (tuple (make-state
+		 (tuple 'noreply (make-state
 														 bondy_ref (state-bondy_ref state)
 														 subscriptions (state-subscriptions state)
 														 players (state-players state)
 														 message (++ message (state-message state))
 														)
-														state
-													 )
 						)
 		)
 	 )
@@ -60,7 +57,7 @@
 	 (: bondy_broker publish
 			(: bondy_utils gen_message_id 'global)
 			(map)
-			(tuple (binary "chat") (binary "chunk-update"))
+		  (binary "chunk-update")
 			(list (state-message state))
 			(map)
 			(: bondy_context local_context (binary "chat") (state-bondy_ref state))
