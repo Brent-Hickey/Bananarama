@@ -26,7 +26,7 @@
 				 (options (map 'match (binary "exact")
 											 'subscription_id (: bondy_ref new 'internal (self) session-id)))
 				 (realm (binary "chat"))
-				 ((tuple 'ok _) (: bondy_broker subscribe realm options (binary "message-update") bondy-ref))
+				 ((tuple 'ok id) (: bondy_broker subscribe realm options (binary "message-update") bondy-ref))
 				 
          (state (make-state bondy_ref bondy-ref
 														subscriptions (map id (binary "message-update"))
