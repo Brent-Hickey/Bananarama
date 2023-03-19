@@ -63,7 +63,7 @@
 																)
 				   )
 				 (bondy-ref (: bondy_ref new 'internal
-											 (tuple (MODULE) 'on-keypress)
+											 (self)
 											 session-id
 											)
 				  )
@@ -75,7 +75,7 @@
 				 
 	
          (state (make-state bondy_ref bondy-ref
-														message (binary "")
+														message ""
 								           )
 					 )
 				 )
@@ -113,7 +113,7 @@
 			(tuple (binary "chat") (binary "message-update"))
 			(list)
 			(map)
-			(: bondy_context (local_context (binary "chat") (state-bondy_ref state)))
+			(: bondy_context local_context (binary "chat") (state-bondy_ref state))
 		 )
      (tuple 'noreply state)
 	)
