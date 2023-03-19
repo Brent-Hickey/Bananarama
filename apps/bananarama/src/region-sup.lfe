@@ -23,8 +23,15 @@
 											 		 'restart 'permanent
 											 		 'shutdown 2000
 											 		 'type 'worker
-											 		 'modules (list)
-													)
+													 )
+											(map 'id 'chunk-state
+													 'start (tuple 'chunk-state 'start-link (list))
+											 		 'restart 'permanent
+											 		 'shutdown 2000
+											 		 'type 'worker
+													 )
+											;;	(map 'id chat-mon)
+											
 											;; (map 'id 'chat-broker
 											;; 					'start (tuple 'chat-broker 'start_link (list))
 											;; 					'restart 'permanent
