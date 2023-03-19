@@ -48,7 +48,7 @@
 ;; 	request
 ;;  )
 
-(defun on-keypress (module)
+(defun on-keypress (_)
 	;;(: module test-callback)
 	;;(: io format "on-keypress handled by module ~p~n" (list module))
 	(: io format "on-keypress handled by module ~n")
