@@ -110,7 +110,7 @@
 	 (: bondy_broker publish
 			(: bondy_utils gen_message_id 'global)
 			(map)
-			(tuple (binary "chat") (binary "message-update"))
+		  (binary "message-update")
 			(list)
 			(map)
 			(: bondy_context local_context (binary "chat") (state-bondy_ref state))
