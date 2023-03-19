@@ -7,13 +7,13 @@
    (handle-info 2)
    (terminate 2)
    (code-change 3)
-	 (on-keypress 0)
+	 (on-keypress 1)
 	)
 
 	(callback
 	 (valid 1)
 	 (start-link 0)
-	 (on-keypress 0)
+	 (on-keypress 1)
 	; (init 1)
 	;	(filter 1)
 	 )
@@ -38,7 +38,7 @@
 ;; 	request
 ;;  )
 
-(defun on-keypress ()
+(defun on-keypress (_)
 	(: io format "on-keypress")
  )
 
