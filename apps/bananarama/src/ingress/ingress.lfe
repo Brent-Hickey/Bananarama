@@ -76,6 +76,7 @@
 				 (sub-options (map 'match (binary "exact")
 													 'subscription_id (: bondy_ref new 'internal (self) pub-session-id)
 													 )
+					 )
 					 ((tuple 'ok id) (: bondy_dealer subscribe realm sub-options (binary "registrations") bondy-ref))
 				 
 	
