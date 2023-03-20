@@ -10,6 +10,7 @@
   subscriptions
 	players
 	message ;; testing
+	sub-id
  )
 
 (defun start-link ()
@@ -31,6 +32,7 @@
          (state (make-state bondy_ref bondy-ref
 														subscriptions (map id (binary "message-update"))
 														players (map)
+														sub-id id
 													 )
 					 )
 				 )
@@ -56,7 +58,7 @@
 	(('tick state)
 	 (: erlang send_after 1000 (self) 'tick)
 	 (: bondy_broker publish
-			(: bondy_utils gen_message_id 'global)
+			(state-sub-id state)
 			(map)
 		  (binary "chunk-update")
 			(list (state-message state))
