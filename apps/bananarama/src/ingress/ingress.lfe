@@ -85,7 +85,7 @@
 								           )
 					 )
 				 )
-				 (: erlang send_after 1000 (self) 'tick)
+		(: erlang send_after 1000 (self) 'tick)
 	  (: io format "started up ingress for module: ~p with id ~p~n" (list module rpc-id))
     (tuple 'ok state)
 	 )
@@ -114,7 +114,8 @@
   (('tick state)
 	 (: erlang send_after 1000 (self) 'tick)
 	 (: bondy_broker publish
-			(: bondy_utils gen_message_id 'global)
+			;;			(: bondy_utils gen_message_id 'global)
+			(map)
 			(map)
 		  (binary "message-update")
 			(list (state-message state))
