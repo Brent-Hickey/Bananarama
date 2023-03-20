@@ -20,6 +20,9 @@
 	 )
 	)
 
+(include-lib "_build/default/lib/wamp/include/wamp.hrl")
+
+
 (defrecord state
 	bondy_ref
 	message
@@ -114,8 +117,7 @@
   (('tick state)
 	 (: erlang send_after 1000 (self) 'tick)
 	 (: bondy_broker publish
-			;;			(: bondy_utils gen_message_id 'global)
-			(map)
+			(: bondy_utils gen_message_id 'global)
 			(map)
 		  (binary "message-update")
 			(list (state-message state))
